@@ -10,8 +10,14 @@ import java.util.List;
 
 public class TransactionService {
 
-    public static List<Transaction> findTransactionsByOriginAccount(String originAccount) {
-        List<Transaction> allTransactions = TransactionRepository.getAll();
+    private final TransactionRepository repository;
+
+    public TransactionService() {
+        this.repository = new TransactionRepository();
+    }
+
+    public List<Transaction> findTransactionsByOriginAccount(String originAccount) {
+        List<Transaction> allTransactions = repository.getAll();
 
         List<Transaction> foundTransactions = new ArrayList<>();
         for (Transaction trx : allTransactions) {
@@ -23,8 +29,8 @@ public class TransactionService {
         return foundTransactions;
     }
 
-    public static List<Transaction> findTransactionsByApp(AppType app) {
-        List<Transaction> allTransactions = TransactionRepository.getAll();
+    public List<Transaction> findTransactionsByApp(AppType app) {
+        List<Transaction> allTransactions = repository.getAll();
 
         List<Transaction> foundTransactions = new ArrayList<>();
         for (Transaction trx : allTransactions) { // por cada transaccion trx de la lista allTransactions
@@ -36,12 +42,12 @@ public class TransactionService {
         return foundTransactions;
     }
 
-    public static List<Transaction> findByTransactionsType (TransactionType type){
-        List<Transaction> allTransactions = TransactionRepository.getAll();
+    public List<Transaction> findByTransactionsType(TransactionType type) {
+        List<Transaction> allTransactions = repository.getAll();
 
         List<Transaction> foundTransactions = new ArrayList<>();
-        for(Transaction trx : allTransactions){
-            if(trx.getType().equals(type)){
+        for (Transaction trx : allTransactions) {
+            if (trx.getType().equals(type)) {
                 foundTransactions.add(trx);
             }
         }

@@ -9,22 +9,10 @@ public class Application {
 
     public static void main(String[] args) {
 
-        /**
-         List<Transaction> transactions = TransactionService.findTransactionsByOriginAccount("account-01");
+        TransactionService service = new TransactionService();
 
-         for (Transaction trx: transactions) {
-         System.out.println(trx);
-         }
-         **/
-        /**
-         List<Transaction> transactions = TransactionService.findTransactionsByApp(AppType.YAPE);
 
-         for (Transaction trx: transactions){
-         System.out.println(trx);
-         }
-         **/
-
-        List<Transaction> transactions = TransactionService.findByTransactionsType(TransactionType.TRANSFER);
+        List<Transaction> transactions = service.findByTransactionsType(TransactionType.TRANSFER);
 
         for (Transaction trx : transactions) {
             System.out.println(trx);

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TransactionRepository {
 
-  public static List<Transaction> getAll() {
+  public List<Transaction> getAll() {
     Transaction t01 = new Transaction();
     t01.setId(1L);
     t01.setTransactionDate("20250901221517");
